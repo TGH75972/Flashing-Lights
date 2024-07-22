@@ -6,25 +6,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const noButton = document.getElementById('no-button');
 
     let flickerInterval;
-    let flickerSpeed = 1000; 
+    let flickerSpeed = 1000;
 
     function startFlickering() {
         flickerInterval = setInterval(() => {
-            if (gameContainer.style.backgroundColor === 'black') {
-                gameContainer.style.backgroundColor = 'white';
-            } else {
-                gameContainer.style.backgroundColor = 'black';
-            }
+            gameContainer.style.animation = gameContainer.style.animation === 'flicker 0.5s infinite' ? 'none' : 'flicker 0.5s infinite';
         }, flickerSpeed);
     }
 
     function increaseFlickerSpeed() {
         if (flickerSpeed > 100) {
-            flickerSpeed -= 100; 
+            flickerSpeed -= 100;
             clearInterval(flickerInterval);
             startFlickering();
         } else {
             clearInterval(flickerInterval);
+            gameContainer.style.animation = 'none';
             endMessage.style.display = 'flex';
             gameContainer.style.backgroundColor = 'black';
         }
@@ -37,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     yesButton.addEventListener('click', () => {
-        window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+        window.location.href = 'https://youtu.be/xvFZjo5PgG0?si=34dzdh9kmHPBGMaS';
     });
 
     noButton.addEventListener('click', () => {
